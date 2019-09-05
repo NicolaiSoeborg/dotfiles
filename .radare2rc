@@ -1,0 +1,12 @@
+e asm.pseudo = true
+e asm.describe = true
+
+# A bit lighter color scheme
+e scr.color = 3
+
+# Nice arrows:
+e scr.utf8 = true
+
+# Use a pager
+e scr.pager=less -R
+

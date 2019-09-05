@@ -1,0 +1,24 @@
+TAB: menu-complete
+"\e[Z": menu-complete-backward
+set menu-complete-display-prefix on
+set show-all-if-ambiguous on
+set colored-stats on
+set colored-completion-prefix on
+set completion-ignore-case on
+set completion-map-case on
+set mark-symlinked-directories on
+set print-completions-horizontally on
+
+# No bell sound
+set bell-style none
+set prefer-visible-bell
+
+#"\e[A": history-search-backward
+#"\e[B": history-search-forward
+
+# Fix ctrl/alt word jumping
+"\e[1;5D": backward-word # Ctrl left
+"\e[1;5C": forward-word  # Ctrl right
+"\e[1;3D": backward-word # Alt left
+"\e[1;3C": forward-word  # Alt right
+

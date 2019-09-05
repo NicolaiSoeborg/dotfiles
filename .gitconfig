@@ -1,0 +1,29 @@
+[core]
+	editor = nano
+
+[alias]
+	s = status --short --branch
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	lgp = log -p --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue) <%an>%Creset' --abbrev-commit
+	fixlocal = commit --amend
+
+[diff "zip"]
+	textconv = unzip -v
+
+[diff "pdf"]
+	textconv = pdfinfo
+
+[diff "bin"]
+	textconv = hexdump -v -C
+
+[user]
+	email = git@xn--sb-lka.org
+	name = Nicolai Søborg
+	signingkey = 1A734959D16F1EFC2152837FC172889D875D6BCE
+
+[commit]
+	gpgsign = true
+
+[push]
+	default = simple
+
