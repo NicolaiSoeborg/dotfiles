@@ -1,8 +1,11 @@
+language en_US
+
 " Plugins:
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'terryma/vim-multiple-cursors' " ctrl+d (skip w/ ctrl+k)
 Plug 'junegunn/vim-easy-align'      " visual mark, use EasyAlign command + space
 Plug 'jamessan/vim-gnupg'           " open encrypted files
+Plug 'neoclide/coc.nvim', {'branch': 'release'} " Language Server
 call plug#end()
 
 " Change keybindings for multi cursor
