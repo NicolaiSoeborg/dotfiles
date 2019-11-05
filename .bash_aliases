@@ -11,8 +11,17 @@ alias ipy='ipython3 --no-banner' # --nosep
 alias xxxd='hexyl --color=auto'
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
+
 # cat <bigfile> | clipboard
-alias clipboard='xclip -selection clipboard'
+case "$(uname -s)" in
+  Linux*)
+    alias clipboard='xclip -selection clipboard'
+    ;;
+  Darwin*)
+    alias clipboard='pbcopy'
+    ;;
+esac
+
 
 # notifications <start|stop>
 notifications() {
@@ -32,16 +41,6 @@ pyc() {
     cython3 -3 --embed "$1"
     gcc -O3 `echo "$1" | awk '{ gsub(".py",".c"); print }'` $(pkg-config --libs --cflags python3)
 }
-
-
-# I should probably find a better place for this (don't want to sync .bashrc)
-_pip3_completion()
-{
-    COMPREPLY=( $( COMP_WORDS="${COMP_WORDS[*]}" \
-                   COMP_CWORD=$COMP_CWORD \
-                   PIP_AUTO_COMPLETE=1 $1 ) )
-}
-complete -o default -F _pip3_completion pip3
 
 
 digg() {
