@@ -2,10 +2,12 @@ language en_US
 
 " Plugins:
 call plug#begin('~/.local/share/nvim/plugged')
-Plug 'terryma/vim-multiple-cursors' " ctrl+d (skip w/ ctrl+k)
-Plug 'junegunn/vim-easy-align'      " visual mark, use EasyAlign command + space
-Plug 'jamessan/vim-gnupg'           " open encrypted files
+Plug 'terryma/vim-multiple-cursors'  " ctrl+d (skip w/ ctrl+k)
+Plug 'junegunn/vim-easy-align'       " visual mark, use EasyAlign command + space
+Plug 'jamessan/vim-gnupg'            " open encrypted files
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Language Server
+Plug 'editorconfig/editorconfig-vim' " EditorConfig support
+Plug 'neomake/neomake'
 call plug#end()
 
 " Change keybindings for multi cursor
@@ -15,11 +17,18 @@ let g:multi_cursor_next_key='<C-d>'
 let g:multi_cursor_skip_key='<C-k>'
 let g:multi_cursor_quit_key='<Esc>'
 
+" Auto open :Neomake error list (a bit annoying)
+"let g:neomake_open_list = 2
+
 " Make backspace behave in a sane manner
 set backspace=indent,eol,start
 
 " Set 'visual' tabsize to 4 spaces
 set tabstop=4
+
+" Focus cursor middle:
+"set relativenumber
+set scrolloff=15
 
 " Tab navigation like Firefox.
 nnoremap <C-S-tab> :tabprevious<CR>
