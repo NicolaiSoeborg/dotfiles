@@ -1,9 +1,7 @@
 alias ..='cd ../'
 alias l='ls -lh --classify'
-alias g='grep -ir'
 alias gdb='/usr/bin/gdb -q'
 alias n='nvim'
-alias x='xdg-open'
 alias py='python3 -q'
 alias strace='/usr/bin/strace -f -s999999 -e "trace=!futex,brk,mmap,mprotect"'
 alias sudo='/usr/bin/sudo -p "[sudo] password for $USER:"'
@@ -15,9 +13,13 @@ alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 # cat <bigfile> | clipboard
 case "$(uname -s)" in
   Linux*)
+    alias g='grep -ir'
+    alias x='xdg-open'
     alias clipboard='xclip -selection clipboard'
     ;;
   Darwin*)
+	alias g='ggrep -ir'
+	alias x='open'
     alias clipboard='pbcopy'
     ;;
 esac
