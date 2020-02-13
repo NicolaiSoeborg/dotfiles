@@ -1,4 +1,4 @@
-language en_US
+language en_US.utf8
 
 " Plugins:
 call plug#begin('~/.local/share/nvim/plugged')
@@ -30,6 +30,10 @@ set tabstop=4
 " Focus cursor middle:
 "set relativenumber
 set scrolloff=15
+
+" YAML stuff:
+au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 " Tab navigation like Firefox.
 nnoremap <C-S-tab> :tabprevious<CR>
