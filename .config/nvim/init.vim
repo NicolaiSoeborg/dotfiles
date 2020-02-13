@@ -1,8 +1,14 @@
 language en_US.utf8
 
+" Auto install plug manager:
+"if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+"  silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+"endif
+" Install: curl -fLo ${XDG_DATA_HOME:-~/.local/share}/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
 " Plugins:
 call plug#begin('~/.local/share/nvim/plugged')
-" Install: curl -fLo ${XDG_DATA_HOME:-~/.local/share}/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 Plug 'terryma/vim-multiple-cursors'  " ctrl+d (skip w/ ctrl+k)
 Plug 'junegunn/vim-easy-align'       " visual mark, use EasyAlign command + space
 Plug 'jamessan/vim-gnupg'            " open encrypted files
