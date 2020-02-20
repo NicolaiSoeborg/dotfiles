@@ -4,7 +4,7 @@ alias gdb='/usr/bin/gdb -q'
 alias n='nvim'
 alias py='python3 -q'
 alias strace='/usr/bin/strace -f -s999999 -e "trace=!futex,brk,mmap,mprotect"'
-alias tcpdump='/usr/sbin/tcpdump -nn -s0 -A'  # dont lookup hostname/ports, dont cap string size, show ascii payloads
+alias tcpdump='/usr/sbin/tcpdump -nn -s0 -l'  # dont lookup hostname/ports, dont cap string size, output-while-capturing
 alias sudo='/usr/bin/sudo -p "[sudo] password for $USER:"'
 alias ipy='ipython3 --no-banner' # --nosep
 alias xxxd='hexyl --color=auto'
