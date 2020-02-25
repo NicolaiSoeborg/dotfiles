@@ -1,5 +1,5 @@
 [core]
-	editor = nano
+	editor = nvim
 
 [alias]
 	s = status --short --branch
@@ -27,3 +27,5 @@
 [push]
 	default = simple
 
+[color]
+        ui = auto
