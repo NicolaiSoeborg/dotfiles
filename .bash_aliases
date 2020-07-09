@@ -40,6 +40,22 @@ notifications() {
 }
 
 
+enable_proxy() {
+	adb shell settings put global http_proxy localhost:8080
+	adb reverse tcp:8080 tcp:8080
+}
+disable_proxy() {
+	adb shell settings delete global http_proxy_host
+	adb shell settings delete global http_proxy_port
+}
+
+
+if [ -f "/usr/local/bin/virtualenvwrapper.sh" ]; then
+    VIRTUALENVWRAPPER_PYTHON=python3
+    source /usr/local/bin/virtualenvwrapper.sh
+fi
+
+
 pyc() {
     cython3 -3 --embed "$1"
     gcc -O3 `echo "$1" | awk '{ gsub(".py",".c"); print }'` $(pkg-config --libs --cflags python3)
@@ -83,3 +99,8 @@ DEBFULLNAME='Nicolai Søborg'
 DEBEMAIL='git@xn--sb-lka.org'
 export DEBEMAIL DEBFULLNAME
 
+# Disable keybase FS
+export KEYBASE_NO_KBFS=1
+
+# pipx
+eval "$(register-python-argcomplete pipx)"
