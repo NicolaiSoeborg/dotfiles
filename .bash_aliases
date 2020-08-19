@@ -102,5 +102,7 @@ export DEBEMAIL DEBFULLNAME
 # Disable keybase FS
 export KEYBASE_NO_KBFS=1
 
-# pipx
-eval "$(register-python-argcomplete pipx)"
+# pipx (apt install python3-argcomplete)
+if [ $(command -v register-python-argcomplete3) ] ; then
+    eval "$(register-python-argcomplete3 pipx)"
+fi
