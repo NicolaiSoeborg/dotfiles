@@ -16,6 +16,7 @@ alias sudo='/usr/bin/sudo -p "[sudo] password for $USER:"'
 alias ipy='ipython3 --no-banner' # --nosep
 alias xxxd='hexyl --color=auto'
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias lzd='docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock lazyteam/lazydocker'
 
 
 # cat <bigfile> | clipboard
@@ -65,7 +66,7 @@ fi
 
 pyc() {
     cython3 -3 --embed "$1"
-    gcc -O3 `echo "$1" | awk '{ gsub(".py",".c"); print }'` $(pkg-config --libs --cflags python3)
+    gcc -fPIE -O3 $(python3-config --cflags --embed) `echo "$1" | awk '{ gsub(".py",".c"); print }'` $(python3-config --ldflags --embed)
 }
 
 
