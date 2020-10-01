@@ -53,8 +53,9 @@ enable_proxy() {
 	adb reverse tcp:8080 tcp:8080
 }
 disable_proxy() {
-	adb shell settings delete global http_proxy_host
-	adb shell settings delete global http_proxy_port
+	adb shell settings delete global global_http_proxy_host
+	adb shell settings delete global global_http_proxy_port
+
 }
 
 
