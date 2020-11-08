@@ -28,4 +28,18 @@
 	default = simple
 
 [color]
-        ui = auto
+	ui = auto
+
+[pull]
+	rebase = true
+
+[init]
+	defaultBranch = master
+
+[clean]
+	requireForce = false
+
+[help]
+	# auto-run correct command after 3 seconds:
+	autocorrect = 30
+
