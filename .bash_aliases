@@ -22,13 +22,15 @@ alias lzd='docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock lazy
 # cat <bigfile> | clipboard
 case "$(uname -s)" in
   Linux*)
+    source <(kitty + complete setup bash)
     alias g='grep -ir'
     alias x='xdg-open'
     alias clipboard='xclip -selection clipboard'
     ;;
   Darwin*)
-	alias g='ggrep -ir'
-	alias x='open'
+    # kitty + complete setup zsh | source /dev/stdin
+    alias g='ggrep -ir'
+    alias x='open'
     alias clipboard='pbcopy'
     ;;
 esac
