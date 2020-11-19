@@ -5,6 +5,9 @@ export LC_MEASUREMENT=en_DK.UTF-8
 # Dont make __pycache__ (hmm, maybe only on laptop?)
 export PYTHONDONTWRITEBYTECODE=1
 
+# Opt out of dotnet tracking
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
+
 alias ..='cd ../'
 alias l='ls -lh --classify'
 alias gdb='/usr/bin/gdb -q'
