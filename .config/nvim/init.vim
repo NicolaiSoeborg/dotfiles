@@ -59,6 +59,9 @@ nnoremap <silent> <esc> :noh<cr><esc>
 " Force saving files that require root permission 
 cnoremap W! w !sudo tee > /dev/null %
 
+" Beautify json command:
+com! BeautifyJSON %!python3 -m json.tool
+
 " Fancy tab completion
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
