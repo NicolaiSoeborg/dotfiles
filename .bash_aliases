@@ -54,13 +54,14 @@ notifications() {
 
 
 enable_proxy() {
-	adb shell settings put global http_proxy localhost:8080
-	adb reverse tcp:8080 tcp:8080
+    adb shell settings put global http_proxy localhost:8080
+    adb shell settings put global captive_portal_mode 0
+    adb reverse tcp:8080 tcp:8080
+    # adb forward tcp:27042 localabstract:/data/local/tmp/frida.sock
 }
 disable_proxy() {
-	adb shell settings delete global global_http_proxy_host
-	adb shell settings delete global global_http_proxy_port
-
+    adb shell settings delete global global_http_proxy_host
+    adb shell settings delete global global_http_proxy_port
 }
 
 
