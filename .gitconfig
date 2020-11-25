@@ -6,6 +6,7 @@
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 	lgp = log -p --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue) <%an>%Creset' --abbrev-commit
 	fixlocal = commit --amend
+	ws = "!git rebase --whitespace=fix --onto $(git merge-base HEAD @{u})"
 
 [diff "zip"]
 	textconv = unzip -v
@@ -25,7 +26,7 @@
 	gpgsign = true
 
 [push]
-	default = simple
+	default = current
 
 [color]
 	ui = auto
@@ -42,4 +43,3 @@
 [help]
 	# auto-run correct command after 3 seconds:
 	autocorrect = 30
-
