@@ -62,6 +62,7 @@ enable_proxy() {
 disable_proxy() {
     adb shell settings delete global global_http_proxy_host
     adb shell settings delete global global_http_proxy_port
+    adb shell settings delete global http_proxy
 }
 
 
@@ -100,6 +101,7 @@ extract() {
             *.tar) tar xf "$1" ;;
             *.tbz2) tar xjf "$1" ;;
             *.tgz) tar xzf "$1" ;;
+            *.xz) xz --decompress "$1" ;;
             *.zip) unzip "$1" ;;
             *.Z) uncompress "$1" ;;
             *.7z) 7z x "$1" ;;
