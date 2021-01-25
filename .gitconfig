@@ -25,6 +25,10 @@
 [commit]
 	gpgsign = true
 
+# Load company git config:
+[includeIf "gitdir:~/work/"]
+	path = ~/work/.gitconfig
+
 [push]
 	default = current
 
