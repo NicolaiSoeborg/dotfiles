@@ -12,6 +12,7 @@ alias ..='cd ../'
 alias l='ls -lh --classify'
 alias gdb='/usr/bin/gdb -q'
 alias n='nvim'
+alias b='base64'
 alias py='python3 -q'
 alias strace='/usr/bin/strace -f -s999999 -e "trace=!futex,brk,mmap,mprotect"'
 alias tcpdump='/usr/sbin/tcpdump -nn -s0 -l'  # dont lookup hostname/ports, dont cap string size, output-while-capturing
