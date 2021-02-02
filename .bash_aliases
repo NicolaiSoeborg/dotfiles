@@ -13,6 +13,7 @@ alias l='ls -lh --classify'
 alias gdb='/usr/bin/gdb -q'
 alias n='nvim'
 alias b='base64'
+alias jwt='tr "." "\n" | head -n2 | base64 -d 2>/dev/null ; echo'
 alias py='python3 -q'
 alias strace='/usr/bin/strace -f -s999999 -e "trace=!futex,brk,mmap,mprotect"'
 alias tcpdump='/usr/sbin/tcpdump -nn -s0 -l'  # dont lookup hostname/ports, dont cap string size, output-while-capturing
@@ -65,7 +66,13 @@ disable_proxy() {
     adb shell settings delete global global_http_proxy_port
     adb shell settings delete global http_proxy
 }
-
+apk_install() {
+    if [ ! -z $1 ] ; then
+        adb push "$1" /data/local/tmp/app.apk
+        adb shell pm install -i "com.android.vending" -r /data/local/tmp/app.apk
+        adb shell rm /data/local/tmp/app.apk
+    fi
+}
 
 if [ -f "/usr/local/bin/virtualenvwrapper.sh" ]; then
     VIRTUALENVWRAPPER_PYTHON=python3
