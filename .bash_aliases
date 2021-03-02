@@ -73,6 +73,13 @@ apk_install() {
         adb shell rm /data/local/tmp/app.apk
     fi
 }
+apk_packages() {
+    PATTERN=".*"
+    if [ ! -z $1 ] ; then
+        PATTERN="$1"
+    fi
+    adb shell pm list packages | cut -d':' -f2 | egrep "$PATTERN"
+}
 
 if [ -f "/usr/local/bin/virtualenvwrapper.sh" ]; then
     VIRTUALENVWRAPPER_PYTHON=python3
