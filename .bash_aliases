@@ -55,6 +55,7 @@ notifications() {
 }
 
 
+# Android tricks
 enable_proxy() {
     adb shell settings put global http_proxy localhost:8080
     adb shell settings put global captive_portal_mode 0
@@ -80,6 +81,10 @@ apk_packages() {
     fi
     adb shell pm list packages | cut -d':' -f2 | egrep "$PATTERN"
 }
+apk_info() {
+    adb shell pm dump "$1"
+}
+
 
 if [ -f "/usr/local/bin/virtualenvwrapper.sh" ]; then
     VIRTUALENVWRAPPER_PYTHON=python3
