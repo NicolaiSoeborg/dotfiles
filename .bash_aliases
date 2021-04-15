@@ -132,6 +132,21 @@ extract() {
     fi
 }
 
+cert_info() {
+    if [ -f "$1" ] ; then
+        case $1 in
+            *.pem) openssl x509   -in "$1" -text -noout ;;
+            *.der) openssl x509   -in "$1" -text -noout -inform DER ;;
+            *.crt) openssl x509   -in "$1" -text -noout ;;
+            *.csr) openssl req    -in "$1" -text -noout -verify ;;
+            *.pfx) openssl pkcs12 -in "$1" -info -nodes ;;
+            *) echo "'$1' cannot be parsed via cert_info()" ;;
+        esac
+    else
+        echo "'$1' is not a valid file"
+    fi
+}
+
 # DEB
 DEBFULLNAME='Nicolai Søborg'
 DEBEMAIL='git@xn--sb-lka.org'
