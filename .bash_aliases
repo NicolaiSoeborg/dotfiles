@@ -41,20 +41,6 @@ case "$(uname -s)" in
 esac
 
 
-# notifications <start|stop>
-notifications() {
-    if [ ! -z $1 ] ; then
-        case $1 in
-            start) gsettings set org.gnome.desktop.notifications show-banners true ;;
-            stop) gsettings set org.gnome.desktop.notifications show-banners false ;;
-            *) echo "Usage: notifications <start|stop>  ('$1' is not valid)" ;;
-        esac
-    else
-        echo "Usage: notifications <start|stop>"
-    fi
-}
-
-
 # Android tricks
 enable_proxy() {
     adb shell settings put global http_proxy localhost:8080
@@ -86,9 +72,9 @@ apk_info() {
 }
 
 
-if [ -f "/usr/local/bin/virtualenvwrapper.sh" ]; then
+if [ -f "/usr/share/virtualenvwrapper/virtualenvwrapper.sh" ]; then
     VIRTUALENVWRAPPER_PYTHON=python3
-    source /usr/local/bin/virtualenvwrapper.sh
+    source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 fi
 
 
