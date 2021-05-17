@@ -70,6 +70,17 @@ apk_packages() {
 apk_info() {
     adb shell pm dump "$1"
 }
+apk_download() {
+    versionName=$(apk_info "$1"|grep -Po '(?<=versionName=)[^ ]+')
+    versionCode=$(apk_info "$1"|grep -Po '(?<=versionCode=)[^ ]+')
+    versionStr="${versionName}_${versionCode}"
+    mkdir "./$versionStr/"
+    cd "./$versionStr/"
+    for fullpath in $(adb shell pm path "$1"| sed 's/^package://')
+    do
+        adb pull "$fullpath"
+    done
+}
 
 
 if [ -f "/usr/share/virtualenvwrapper/virtualenvwrapper.sh" ]; then
