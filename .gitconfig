@@ -28,8 +28,8 @@
 	name = Nicolai Søborg
 	signingkey = 1A734959D16F1EFC2152837FC172889D875D6BCE
 
-[commit]
-	gpgsign = true
+#[commit]
+#	gpgsign = true
 
 # Load company git config:
 [includeIf "gitdir:~/work/"]
