@@ -54,7 +54,7 @@ disable_proxy() {
     adb shell settings delete global http_proxy
 }
 apk_install() {
-    if [ ! -z $1 ] ; then
+    if [ -f "$1" ] ; then
         adb push "$1" /data/local/tmp/app.apk
         adb shell pm install -i "com.android.vending" -r /data/local/tmp/app.apk
         adb shell rm /data/local/tmp/app.apk
@@ -80,6 +80,11 @@ apk_download() {
     do
         adb pull "$fullpath"
     done
+}
+apk_extract() {
+    if [ -f "$1" ] ; then
+        jadx --show-bad-code --deobf --deobf-min 2 --deobf-use-sourcename --deobf-parse-kotlin-metadata "$1"
+    fi
 }
 
 
