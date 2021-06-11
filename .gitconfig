@@ -7,6 +7,7 @@
 	lgp = log -p --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue) <%an>%Creset' --abbrev-commit
 	fixlocal = commit --amend
 	ws = "!git rebase --whitespace=fix --onto $(git merge-base HEAD @{u})"
+	moveprs = !echo "git branch ${1:-some-new-branch}" && echo 'git reset HEAD@{num-commits-back}' && echo "git checkout ${1:-some-new-branch}"
 
 [diff "zip"]
 	textconv = unzip -v
