@@ -33,6 +33,7 @@ set backspace=indent,eol,start
 
 " Set 'visual' tabsize to 4 spaces
 set tabstop=4
+set shiftwidth=4
 
 " Focus cursor middle:
 "set relativenumber
