@@ -70,6 +70,15 @@ apk_packages() {
 apk_info() {
     adb shell pm dump "$1"
 }
+apk_version() {
+    if [ -z $1 ] ; then
+        exit 1
+    fi
+    versionName=$(apk_info "$1"|grep -Po '(?<=versionName=)[^ ]+')
+    versionCode=$(apk_info "$1"|grep -Po '(?<=versionCode=)[^ ]+')
+    versionStr="${versionName}_${versionCode}"
+    printf "$versionStr\n"
+}
 apk_download() {
     versionName=$(apk_info "$1"|grep -Po '(?<=versionName=)[^ ]+')
     versionCode=$(apk_info "$1"|grep -Po '(?<=versionCode=)[^ ]+')
