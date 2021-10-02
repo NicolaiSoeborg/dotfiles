@@ -1,5 +1,6 @@
 e asm.pseudo = true
 e asm.describe = true
+e emu.str = true
 
 # A bit lighter color scheme
 e scr.color = 3
