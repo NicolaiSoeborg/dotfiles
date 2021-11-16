@@ -13,6 +13,7 @@ alias l='ls -lh --classify'
 alias gdb='/usr/bin/gdb -q'
 alias n='nvim'
 alias b='base64'
+alias bjq='b -d | jq'
 alias jwt='tr "." "\n" | head -n2 | base64 -d 2>/dev/null ; echo'
 alias py='python3 -q'
 alias strace='/usr/bin/strace -f -s999999 -e "trace=!futex,brk,mmap,mprotect"'
@@ -27,7 +28,7 @@ alias lzd='docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock lazy
 # cat <bigfile> | clipboard
 case "$(uname -s)" in
   Linux*)
-    source <(kitty + complete setup bash)
+    #source <(kitty + complete setup bash)
     alias g='grep -ir'
     alias x='xdg-open'
     alias clipboard='xclip -selection clipboard'
@@ -146,11 +147,10 @@ extract() {
 cert_info() {
     if [ -f "$1" ] ; then
         case $1 in
-            *.pem) openssl x509   -in "$1" -text -noout ;;
-            *.der) openssl x509   -in "$1" -text -noout -inform DER ;;
-            *.crt) openssl x509   -in "$1" -text -noout ;;
-            *.csr) openssl req    -in "$1" -text -noout -verify ;;
-            *.pfx) openssl pkcs12 -in "$1" -info -nodes ;;
+            *.pem|*.crt) openssl x509   -in "$1" -text -noout ;;
+            *.der)       openssl x509   -in "$1" -text -noout -inform DER ;;
+            *.csr)       openssl req    -in "$1" -text -noout -verify ;;
+            *.pfx|*.p12) openssl pkcs12 -in "$1" -info -nodes ;;
             *) echo "'$1' cannot be parsed via cert_info()" ;;
         esac
     else

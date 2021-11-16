@@ -5,5 +5,5 @@
 # cd pwndbg && ./setup.sh
 # source /home/nsq/tools/pwndbg/gdbinit.py
 
-# git clone --quiet --depth 1 https://github.com/hugsy/gef.git ~/.local/share/gef && echo "source ~/.local/share/gef/gef.py" >> ~/.gdbinit
+# git clone --quiet --depth 1 https://github.com/hugsy/gef.git ~/.local/share/gef
 source ~/.local/share/gef/gef.py
