@@ -27,7 +27,7 @@
 [user]
 	email = git@xn--sb-lka.org
 	name = Nicolai Søborg
-	signingkey = 1A734959D16F1EFC2152837FC172889D875D6BCE
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAVNgMbEMnUDU75WOk/90894XGiKI2DOqx0eHZh2DVyI
 
 #[commit]
 #	gpgsign = true
@@ -54,3 +54,7 @@
 [help]
 	# auto-run correct command after 3 seconds:
 	autocorrect = 30
+[commit]
+	gpgsign = true
+[gpg]
+	format = ssh

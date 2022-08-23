@@ -24,11 +24,12 @@ alias xxxd='hexyl --color=auto'
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias lzd='docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock lazyteam/lazydocker'
 
+# Or maybe `alias ssh=kitty +kitten ssh'` ?
+# export TERM=xterm-color
 
-# cat <bigfile> | clipboard
 case "$(uname -s)" in
   Linux*)
-    #source <(kitty + complete setup bash)
+    which kitty > /dev/null && source <(kitty + complete setup bash)
     alias g='grep -ir'
     alias x='xdg-open'
     alias clipboard='xclip -selection clipboard'
