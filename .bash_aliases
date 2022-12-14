@@ -39,6 +39,7 @@ case "$(uname -s)" in
     alias g='ggrep -ir'
     alias x='open'
     alias clipboard='pbcopy'
+    alias plist='/usr/libexec/PlistBuddy -c print'
     ;;
 esac
 
