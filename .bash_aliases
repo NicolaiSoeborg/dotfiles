@@ -5,11 +5,14 @@ export LC_MEASUREMENT=en_DK.UTF-8
 # Dont make __pycache__ (hmm, maybe only on laptop?)
 export PYTHONDONTWRITEBYTECODE=1
 
+# Verify DCT integrity of the images
+export DOCKER_CONTENT_TRUST=1
+
 # Opt out of dotnet tracking
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
 alias ..='cd ../'
-alias l='ls -lh --classify'
+alias l='ls -Ahl --classify'
 alias gdb='/usr/bin/gdb -q'
 alias n='nvim'
 alias b='base64'
@@ -172,3 +175,7 @@ export KEYBASE_NO_KBFS=1
 if [ $(command -v register-python-argcomplete3) ] ; then
     eval "$(register-python-argcomplete3 pipx)"
 fi
+
+docker-shell() {
+    docker exec -it "$1" sh
+}
