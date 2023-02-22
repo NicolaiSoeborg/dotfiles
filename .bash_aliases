@@ -26,7 +26,7 @@ alias ipy='ipython3 --no-banner' # --nosep
 alias xxxd='hexyl --color=auto'
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias lzd='docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock lazyteam/lazydocker'
-alias dockershell='sudo docker exec -it "$(sudo docker ps -q)" sh'
+alias dockershell='sudo docker exec -it "$(sudo docker ps -q|head -n1)" sh'
 
 # Or maybe `alias ssh=kitty +kitten ssh'` ?
 # export TERM=xterm-color
