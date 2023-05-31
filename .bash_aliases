@@ -14,6 +14,7 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=1
 alias ..='cd ../'
 alias l='ls -Ahl --classify'
 alias gdb='/usr/bin/gdb -q'
+alias ip='ip --color=auto'
 alias n='nvim'
 alias b='base64'
 alias bjq='b -d | jq'
