@@ -29,9 +29,6 @@
 	name = Nicolai Søborg
 	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAVNgMbEMnUDU75WOk/90894XGiKI2DOqx0eHZh2DVyI
 
-#[commit]
-#	gpgsign = true
-
 # Load company git config:
 [includeIf "gitdir:~/work/"]
 	path = ~/work/.gitconfig

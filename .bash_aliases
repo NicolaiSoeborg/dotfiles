@@ -6,7 +6,7 @@ export LC_MEASUREMENT=en_DK.UTF-8
 export PYTHONDONTWRITEBYTECODE=1
 
 # Verify DCT integrity of the images
-export DOCKER_CONTENT_TRUST=1
+# export DOCKER_CONTENT_TRUST=1
 
 # Opt out of dotnet tracking
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
