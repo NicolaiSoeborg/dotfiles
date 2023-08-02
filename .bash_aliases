@@ -179,3 +179,5 @@ if [ $(command -v register-python-argcomplete3) ] ; then
     eval "$(register-python-argcomplete3 pipx)"
 fi
 
+# Don't print TPM errors when using it as SSH provider
+export TPM2_PKCS11_LOG_LEVEL=0
