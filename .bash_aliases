@@ -100,7 +100,8 @@ apk_download() {
 }
 apk_extract() {
     if [ -f "$1" ] ; then
-        jadx --show-bad-code --deobf --deobf-min 2 --deobf-use-sourcename --deobf-parse-kotlin-metadata "$1"
+        ~/tools/jadx/build/jadx/bin/jadx --show-bad-code --deobf --deobf-min 2 --deobf-use-sourcename --deobf-parse-kotlin-metadata 
+--use-kotlin-methods-for-var-names apply-and-hide "$1"
     fi
 }
 
