@@ -11,8 +11,8 @@ export PYTHONDONTWRITEBYTECODE=1
 # Opt out of dotnet tracking
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
-alias ..='cd ../'
 alias l='ls -Ahl --classify'
+alias ..='cd ../ && l'
 alias gdb='/usr/bin/gdb -q'
 alias ip='ip --color=auto'
 alias n='nvim'
@@ -100,8 +100,7 @@ apk_download() {
 }
 apk_extract() {
     if [ -f "$1" ] ; then
-        ~/tools/jadx/build/jadx/bin/jadx --show-bad-code --deobf --deobf-min 2 --deobf-use-sourcename --deobf-parse-kotlin-metadata 
---use-kotlin-methods-for-var-names apply-and-hide "$1"
+        ~/tools/jadx/build/jadx/bin/jadx --show-bad-code --deobf --deobf-min 2 --deobf-use-sourcename --deobf-res-name-source auto "$1"
     fi
 }
 
@@ -135,6 +134,7 @@ extract() {
             *.tar.bz2) tar xjf "$1" ;;
             *.tar.gz) tar xzf "$1" ;;
             *.tar.xz) tar xf "$1" ;;
+            *.txz) tar xf "$1" ;;
             *.bz2) bunzip2 "$1" ;;
             *.deb) ar x "$1" ;;
             *.rar) unrar e "$1" ;;
@@ -142,7 +142,7 @@ extract() {
             *.tar) tar xf "$1" ;;
             *.tbz2) tar xjf "$1" ;;
             *.tgz) tar xzf "$1" ;;
-            *.xz) xz --decompress "$1" ;;
+            *.txz) unxz "$1" ;;
             *.zip) unzip "$1" ;;
             *.Z) uncompress "$1" ;;
             *.7z) 7z x "$1" ;;
@@ -182,3 +182,6 @@ fi
 
 # Don't print TPM errors when using it as SSH provider
 export TPM2_PKCS11_LOG_LEVEL=0
+
+# Run less in "secure" mode (disable `!`)
+export LESSSECURE=1
