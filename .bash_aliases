@@ -32,15 +32,16 @@ alias dockershell='sudo docker exec -it "$(sudo docker ps -q|head -n1)" sh'
 # Or maybe `alias ssh=kitty +kitten ssh'` ?
 # export TERM=xterm-color
 
+# Source kitty if available, ${SHELL##*/} magic is "bash" or "zsh" depending on shell
+which kitty > /dev/null && source <(kitty + complete setup ${SHELL##*/})
+
 case "$(uname -s)" in
   Linux*)
-    which kitty > /dev/null && source <(kitty + complete setup bash)
     alias g='grep -ir'
     alias x='xdg-open'
     alias clipboard='xclip -selection clipboard'
     ;;
   Darwin*)
-    # kitty + complete setup zsh | source /dev/stdin
     alias g='ggrep -ir'
     alias x='open'
     alias clipboard='pbcopy'
