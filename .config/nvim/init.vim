@@ -11,11 +11,12 @@
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'terryma/vim-multiple-cursors'  " ctrl+d (skip w/ ctrl+k)
 Plug 'junegunn/vim-easy-align'       " visual mark, use EasyAlign command + space
-Plug 'jamessan/vim-gnupg'            " open encrypted files
+" Plug 'jamessan/vim-gnupg'            " open encrypted files
 Plug 'neoclide/coc.nvim', {'branch': 'release'}           " Language Server
 Plug 'editorconfig/editorconfig-vim'                      " EditorConfig support
-Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' } " File explorer (requires: pip3 install --user pynvim)
-Plug 'neomake/neomake'
+" Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' } " File explorer (requires: pip3 install --user pynvim)
+" Plug 'neomake/neomake'
+Plug 'preservim/nerdtree'            ", { 'on': 'NERDTreeToggle' }
 call plug#end()
 
 " Change keybindings for multi cursor
