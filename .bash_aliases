@@ -1,6 +1,11 @@
 # Change first day of week to Monday and use metric system
 export LC_TIME=en_DK.UTF-8
 export LC_MEASUREMENT=en_DK.UTF-8
+# Above will break on most servers, so we want to add an `SendEnv -LC_*` to our local ssh_config,
+# but this doesn't work on Debian based systems, due to a global ssh setting sending these env vars
+# (global settings are loaded _last_, meaning they take precedence in case of SendEnv - clearly a bug in ssh_config)
+# Instead we can explicit load our own ssh_config, which will avoid loading the global ssh config:
+alias ssh='ssh -F ~/.ssh/config $@'
 
 # Dont make __pycache__ (hmm, maybe only on laptop?)
 export PYTHONDONTWRITEBYTECODE=1
