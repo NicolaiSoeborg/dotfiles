@@ -122,6 +122,15 @@ pyc() {
     gcc -fPIE -O3 $(python3-config --cflags --embed) `echo "$1" | awk '{ gsub(".py",".c"); print }'` $(python3-config --ldflags --embed)
 }
 
+mkvirtualenv() {
+	NAME=${1:-.venv}
+	py -m venv "$NAME" && source "$NAME/bin/activate"
+}
+activate() {
+	NAME=${1:-.venv}
+	source "$NAME/bin/activate"
+}
+
 http_server() {
     if [[ $PWD = $HOME ]]; then echo "Not from HOME"; return; fi
     local LHOST=$(ip a show tun0 | grep 'inet ' | awk '{ print substr($2, 0, length($2)-3) }')

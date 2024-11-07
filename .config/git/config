@@ -27,11 +27,7 @@
 [user]
 	email = git@xn--sb-lka.org
 	name = Nicolai Søborg
-	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAVNgMbEMnUDU75WOk/90894XGiKI2DOqx0eHZh2DVyI
-
-# Load company git config:
-[includeIf "gitdir:~/work/"]
-	path = ~/work/.gitconfig
+	signingkey = ~/.ssh/id_ed25519.pub
 
 [push]
 	default = current
@@ -51,7 +47,14 @@
 [help]
 	# auto-run correct command after 3 seconds:
 	autocorrect = 30
+
 [commit]
 	gpgsign = true
+
 [gpg]
 	format = ssh
+
+# Load company git config:
+[includeIf "gitdir:~/work/"]
+	path = ~/work/.gitconfig
+
