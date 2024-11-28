@@ -9,6 +9,7 @@
 
 " Plugins:
 call plug#begin('~/.local/share/nvim/plugged')
+Plug 'tpope/vim-sensible'
 Plug 'terryma/vim-multiple-cursors'  " ctrl+d (skip w/ ctrl+k)
 Plug 'junegunn/vim-easy-align'       " visual mark, use EasyAlign command + space
 " Plug 'jamessan/vim-gnupg'            " open encrypted files
@@ -17,7 +18,13 @@ Plug 'editorconfig/editorconfig-vim'                      " EditorConfig support
 " Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' } " File explorer (requires: pip3 install --user pynvim)
 " Plug 'neomake/neomake'
 Plug 'preservim/nerdtree'            ", { 'on': 'NERDTreeToggle' }
+
+"Plug 'preservim/vim-indent-guides'  " This plugin is a bit too much, instead:
+Plug 'ntpeters/vim-better-whitespace' " Highlights 'bad' whitespaces.  Todo: highlight mixed tabs and spaces
 call plug#end()
+
+" Option for vim-better-whitespace
+let g:show_spaces_that_precede_tabs=1
 
 " Change keybindings for multi cursor
 let g:multi_cursor_use_default_mapping=0
@@ -65,12 +72,11 @@ cnoremap W! w !sudo tee > /dev/null %
 com! BeautifyJSON %!python3 -m json.tool
 
 " Fancy tab completion
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-function! s:check_back_space() abort
+function! CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+inoremap <silent><expr> <Tab>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
