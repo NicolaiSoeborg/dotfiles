@@ -17,10 +17,12 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}           " Language Server
 Plug 'editorconfig/editorconfig-vim'                      " EditorConfig support
 " Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' } " File explorer (requires: pip3 install --user pynvim)
 " Plug 'neomake/neomake'
-Plug 'preservim/nerdtree'            ", { 'on': 'NERDTreeToggle' }
+" Plug 'preservim/nerdtree'          ", { 'on': 'NERDTreeToggle' }
 
 "Plug 'preservim/vim-indent-guides'  " This plugin is a bit too much, instead:
 Plug 'ntpeters/vim-better-whitespace' " Highlights 'bad' whitespaces.  Todo: highlight mixed tabs and spaces
+
+Plug 'Darazaki/indent-o-matic'       " Detect indents and set the corrent value
 call plug#end()
 
 " Option for vim-better-whitespace
