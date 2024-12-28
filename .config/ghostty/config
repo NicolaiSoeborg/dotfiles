@@ -1,0 +1,2 @@
+keybind = ctrl+shift+enter=new_split:down
+keybind = ctrl+shift+l=equalize_splits
