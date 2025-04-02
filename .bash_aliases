@@ -1,6 +1,6 @@
 # Change first day of week to Monday and use metric system
-export LC_TIME=en_DK.UTF-8
-export LC_MEASUREMENT=en_DK.UTF-8
+#export LC_TIME=en_DK.UTF-8
+#export LC_MEASUREMENT=en_DK.UTF-8
 # Above will break on most servers, so we want to add an `SendEnv -LC_*` to our local ssh_config,
 # but this doesn't work on Debian based systems, due to a global ssh setting sending these env vars
 # (global settings are loaded _last_, meaning they take precedence in case of SendEnv - clearly a bug in ssh_config)
@@ -49,8 +49,11 @@ case "$(uname -s)" in
   Darwin*)
     alias g='ggrep -ir'
     alias x='open'
+    alias l='gls -Ahl --classify'
     alias clipboard='pbcopy'
     alias plist='/usr/libexec/PlistBuddy -c print'
+    export ALLOW_BROWSER_INTEGRATION_OVERRIDE=true  # Bitwarden
+    export SSH_AUTH_SOCK=~/.bitwarden-ssh-agent.sock
     ;;
 esac
 
@@ -124,7 +127,7 @@ pyc() {
 
 mkvirtualenv() {
 	NAME=${1:-.venv}
-	py -m venv "$NAME" && source "$NAME/bin/activate"
+	py -m venv --system-site-packages "$NAME" && source "$NAME/bin/activate"
 }
 activate() {
 	NAME=${1:-.venv}
