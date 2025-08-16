@@ -21,6 +21,7 @@ alias ..='cd ../ && l'
 alias gdb='/usr/bin/gdb -q'
 alias ip='ip --color=auto'
 alias n='nvim'
+alias codium="flatpak run com.vscodium.codium "
 alias b='base64'
 alias bjq='b -d | jq'
 alias jwt='tr "." "\n" | head -n2 | base64 -d 2>/dev/null ; echo'
