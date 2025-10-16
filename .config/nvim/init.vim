@@ -52,6 +52,9 @@ set scrolloff=15
 " Enable truecolor
 set termguicolors
 
+" Yank to system clipboard
+set clipboard+=unnamedplus
+
 " YAML stuff:
 au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
@@ -67,7 +70,7 @@ inoremap <C-t>     <Esc>:tabnew<CR>
 " Esc removes highlight: http://stackoverflow.com/a/4372666/1588959
 nnoremap <silent> <esc> :noh<cr><esc>
 
-" Force saving files that require root permission 
+" Force saving files that require root permission
 cnoremap W! w !sudo tee > /dev/null %
 
 " Beautify json command:
