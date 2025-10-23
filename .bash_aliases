@@ -31,6 +31,7 @@ alias tcpdump='tcpdump -nn -s0 -l'  # dont lookup hostname/ports, dont cap strin
 alias sudo='/usr/bin/sudo -p "[sudo] password for $USER:" '
 alias ipy='ipython3 --no-banner' # --nosep
 alias xxxd='hexyl --color=auto'
+alias yless="jless --yaml"  # cargo install jless
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias lzd='docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock lazyteam/lazydocker'
 alias dockershell='sudo docker exec -it "$(sudo docker ps -q|head -n1)" sh'
@@ -39,7 +40,7 @@ alias dockershell='sudo docker exec -it "$(sudo docker ps -q|head -n1)" sh'
 # export TERM=xterm-color
 
 # Source kitty if available, ${SHELL##*/} magic is "bash" or "zsh" depending on shell
-which kitty > /dev/null && source <(kitty + complete setup ${SHELL##*/})
+which kitty 2> /dev/null && source <(kitty + complete setup ${SHELL##*/})
 
 case "$(uname -s)" in
   Linux*)
