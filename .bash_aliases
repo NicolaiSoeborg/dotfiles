@@ -40,7 +40,7 @@ alias dockershell='sudo docker exec -it "$(sudo docker ps -q|head -n1)" sh'
 # export TERM=xterm-color
 
 # Source kitty if available, ${SHELL##*/} magic is "bash" or "zsh" depending on shell
-which kitty 2> /dev/null && source <(kitty + complete setup ${SHELL##*/})
+which kitty &>/dev/null && source <(kitty + complete setup ${SHELL##*/})
 
 case "$(uname -s)" in
   Linux*)
