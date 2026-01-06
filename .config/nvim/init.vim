@@ -13,7 +13,10 @@ Plug 'tpope/vim-sensible'
 Plug 'terryma/vim-multiple-cursors'  " ctrl+d (skip w/ ctrl+k)
 Plug 'junegunn/vim-easy-align'       " visual mark, use EasyAlign command + space
 " Plug 'jamessan/vim-gnupg'            " open encrypted files
+
 Plug 'neoclide/coc.nvim', {'branch': 'release'}           " Language Server
+" Plug 'dense-analysis/ale'   " <-- consider instead of CoC?
+
 Plug 'editorconfig/editorconfig-vim'                      " EditorConfig support
 " Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' } " File explorer (requires: pip3 install --user pynvim)
 " Plug 'neomake/neomake'
@@ -54,6 +57,9 @@ set termguicolors
 
 " Yank to system clipboard
 set clipboard+=unnamedplus
+
+" Case insensitive searching
+set ignorecase
 
 " YAML stuff:
 au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent

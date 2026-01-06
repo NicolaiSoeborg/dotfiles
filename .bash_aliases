@@ -10,6 +10,10 @@ alias ssh='ssh -F ~/.ssh/config $@'
 # Dont make __pycache__ (hmm, maybe only on laptop?)
 export PYTHONDONTWRITEBYTECODE=1
 
+# Make sure OpenSC uses `openpgp`-mode instead of PIV_II mode.
+# This will expose the keys on the openpgp-smartcard instead of that PIV crap
+export OPENSC_DRIVER=openpgp
+
 # Verify DCT integrity of the images
 # export DOCKER_CONTENT_TRUST=1
 
