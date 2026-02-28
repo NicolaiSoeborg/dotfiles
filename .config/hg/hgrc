@@ -1,0 +1,8 @@
+[ui]
+username = Nicolai <hg@xn--sb-lka.org>
+editor = nvim
+
+[alias]
+s = status
+lgp = log --graph -p -T '{short(node)} {desc|firstline} ({date|age}) <{author|person}>\n'
+fixlocal = commit --amend
