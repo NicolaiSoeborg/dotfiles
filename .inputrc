@@ -11,7 +11,7 @@ set print-completions-horizontally on
 
 # No bell sound
 set bell-style none
-set prefer-visible-bell
+# set prefer-visible-bell
 
 #"\e[A": history-search-backward
 #"\e[B": history-search-forward

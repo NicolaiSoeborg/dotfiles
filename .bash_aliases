@@ -156,6 +156,25 @@ http_server() {
     python3 -m http.server "$LPORT"
 }
 
+firewall-watcher() {
+    # https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/7/html/security_guide/configuring_logging_for_denied_packets
+    if [[ $(firewall-cmd --get-log-denied) != "all" ]]; then
+        echo "firewalld log-denied is not set to 'all'." >&2
+        echo "Please run: firewall-cmd --set-log-denied=all" >&2
+    fi
+    pgrep -f 'journalctl .*filter_.*REJECT' > /dev/null && return 0
+    journalctl --follow --dmesg --grep="filter_.*REJECT" -o cat | while read -r line; do
+        declare -A kv
+        for pair in $line; do
+            key=${pair%%=*}
+            val=${pair#*=}
+            kv["$key"]="$val"
+        done
+        notify-send -i network-error "firewalld blocked" "[${kv[PROTO]}]: ${kv[SRC]}:${kv[SPT]} -> ${kv[DST]}:${kv[DPT]}"
+    done &
+    disown
+}
+
 digg() {
     dns_types=(A AAAA TXT CNAME MX NS PTR SOA)
     for i in "${dns_types[@]}";
