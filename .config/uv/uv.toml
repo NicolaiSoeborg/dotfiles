@@ -1,0 +1,3 @@
+# Protect against just-published malware
+exclude-newer = "7 days"
+
