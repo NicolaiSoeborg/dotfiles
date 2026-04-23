@@ -1,0 +1,2 @@
+# Don't fetch newest, avoiding common supply chain malware
+min-release-age = 8 # days

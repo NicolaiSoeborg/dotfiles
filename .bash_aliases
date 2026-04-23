@@ -20,6 +20,9 @@ export OPENSC_DRIVER=openpgp
 # Opt out of dotnet tracking
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
+# Fix NPM being shitty and not following XDG standard
+export NPM_CONFIG_USERCONFIG=${XDG_CONFIG_HOME:$HOME/.config}/npm/npmrc
+
 alias l='ls -Ahl --classify'
 alias ..='cd ../ && l'
 alias gdb='/usr/bin/gdb -q'
