@@ -17,6 +17,10 @@ export OPENSC_DRIVER=openpgp
 # Verify DCT integrity of the images
 # export DOCKER_CONTENT_TRUST=1
 
+# Docker: Enable `--remove-orphans` by default. The default in docker compose
+# is to keep containers, even if deleted from compose.yml. This fixes it.
+COMPOSE_REMOVE_ORPHANS=true
+
 # Opt out of dotnet tracking
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
