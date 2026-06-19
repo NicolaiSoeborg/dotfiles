@@ -20,6 +20,10 @@ export OPENSC_DRIVER=openpgp
 # Opt out of dotnet tracking
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
+# Out out of AI tracking
+export CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY=1
+export CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1
+
 # Fix NPM being shitty and not following XDG standard
 export NPM_CONFIG_USERCONFIG=${XDG_CONFIG_HOME:$HOME/.config}/npm/npmrc
 
@@ -187,6 +191,17 @@ digg() {
     done
 }
 
+sandbox() {
+    # dnf install systemd-nspawn
+    # systemd-nspawn ...
+    bwrap --unshare-net \
+      --ro-bind /usr /usr \
+      --ro-bind /bin /bin \
+      --ro-bind /lib /lib \
+      --ro-bind /lib64 /lib64 \
+      --bind "$PWD" /work --chdir /work \
+      /bin/bash
+}
 
 # Unzip and keep zipped file:
 extract() {
